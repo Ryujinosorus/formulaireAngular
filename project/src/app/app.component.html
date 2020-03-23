@@ -1,0 +1,24 @@
+<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center">
+  <h1>TP Formulaire</h1>
+  <div><a routerLink="/"></a></div>
+  <span class="nav-tool-items">
+    <div>
+      <a mat-button routerLink="/home"><mat-icon>home</mat-icon> Home</a>
+      <a mat-button routerLink="/illu">Entrée 1</a>
+      <a mat-button routerLink="/">Entrée 2</a>
+      <button mat-icon-button [mat-menu-trigger-for]="menu">
+        <mat-icon>account_circle</mat-icon>
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu x-position="before" #menu="matMenu">
+        <button mat-menu-item
+                [routerLink]="['/']">
+          Option 1
+        </button>
+        <button mat-menu-item routerLink="/">Option 2</button>
+      </mat-menu>
+    </div>
+  </span>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,48 @@
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()" fxLayoutAlign="stretch" fxLayout="column" [formGroup]="editForm">
+    <mat-form-field>
+      <input matInput placeholder="nom" formControlName="nom">
+      <div *ngIf="nom.invalid && (nom.dirty || nom.touched)" class="mat-error">
+        <div *ngIf="nom?.errors.required">Le nom est obligatoire</div>
+        <div *ngIf="nom?.errors.minlength">Le nom doit comporter au moins 6 caractères</div>
+
+        <div *ngIf="prenom?.errors.required">Le prenom est obligatoire</div>
+        <div *ngIf="prenom?.errors.minlength">Le prenom doit comporter au moins 6 caractères</div>
+
+        <div *ngIf="tel?.errors.required">Le tel est obligatoire</div>
+        <div *ngIf="tel?.errors.pattern">Le tel est au mauvais format</div>
+      </div>
+    </mat-form-field>
+  <div fxLayoutAlign="center center" class="illus1">
+    <mat-card fxFlex="50">
+      <mat-toolbar color="accent">
+        Illustration un
+      </mat-toolbar>
+      <mat-card-content fxLayout="column" fxLayoutAlign="center" class="illus1-card-content">
+        <form fxLayoutAlign="stretch" fxLayout="column" [formGroup]="editForm">
+          <mat-form-field>
+            <input matInput placeholder="nom" formControlName="nom">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="prenom" formControlName="prenom">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="tel" formControlName="tel">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-form-field>
+              <mat-label>Spécialité</mat-label>
+              <mat-select formControlName="specialite">
+                <mat-option *ngFor="let specialite of specialites" [value]="specialite">
+                  {{specialite}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-form-field>
+
+          <button type="submit" mat-stroked-button mat-raised-button color="accent">Valide</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <button type="submit" mat-stroked-button mat-raised-button color="accent">Valide</button>
+</form>
